@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { Controller, Get, Module } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { S3Controller } from './s3';
 import { getStatus, initSecretsManager, SECRET_NAME, SECRETS_REGION } from './secrets';
 
 @Controller()
@@ -12,7 +13,7 @@ class StatusController {
   }
 }
 
-@Module({ controllers: [StatusController] })
+@Module({ controllers: [StatusController, S3Controller] })
 class AppModule {}
 
 async function bootstrap() {
